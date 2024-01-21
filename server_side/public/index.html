@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking AGK</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Parking AGK</h1>
+
+        <!-- Display last inserted entry -->
+        <div id="lastInserted">
+            <h2>Last entry received:</h2>
+            <p id="lastInsertedInfo"></p>
+        </div>
+
+        <div id="verificationState">
+            <h2>VerificationState:</h2>
+            <p id="VerificationStateInfo"></p>
+        </div>
+
+        <div class="table-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>RFID</th>
+                        <th>Plate</th>
+                        <th>Bluetooth Devices</th>
+                    </tr>
+                </thead>
+                <tbody id="dataList"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Form for adding new data -->
+    <form rfid="dataForm">
+        <div class="form-group">
+            <label for="rfidInput">RFID:</label>
+            <input type="text" id="rfidInput" name="rfidInput" required>
+        </div>
+
+        <div class="form-group">
+            <label for="plateInput">Plate:</label>
+            <input type="text" id="plateInput" name="plateInput" required>
+        </div>
+
+        <div class="form-group">
+            <label for="bluetoothInput">Bluetooth Devices:</label>
+            <input type="text" id="bluetoothInput" name="bluetoothInput" required>
+        </div>
+
+        <button type="button" onclick="addData()">Add Data</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
