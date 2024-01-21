@@ -65,7 +65,7 @@ Fast-Automated-Entrance-System
 
 These commands will set up the necessary environment for running the Fast-Automated-Entrance-System on various platforms.
 
-
+### Server-Side
 ### Prerequisites
 - Python, Node.js, MongoDB
 - Raspberry Pi for client-side scripts
@@ -79,13 +79,6 @@ These commands will set up the necessary environment for running the Fast-Automa
      mongorestore /path/to/smartparking
      ```
 
-### Client-Side Setup (Raspberry Pi)
-1. **Install Python, OpenCV, OCR**:
-   - Run `pip install opencv-python`.
-2. **Run Client Scripts**:
-   - Transfer `client_side` to Raspberry Pi.
-   - Run `python Mainx.py` (replace `x` with version number).
-
 ### Server-Side Setup
 1. **Node.js Server**:
    - Navigate to `server_side`.
@@ -96,8 +89,6 @@ These commands will set up the necessary environment for running the Fast-Automa
 - Open `http://localhost:3000` or server URL in a browser.
 
 
-## Client-Side Setup (Raspberry Pi)
-The client-side application is designed to run on a Raspberry Pi. It requires the installation of OpenCV for image processing and OCR (Optical Character Recognition) for license plate recognition.
 
 ### Prerequisites for Raspberry Pi
 - Python installed.
