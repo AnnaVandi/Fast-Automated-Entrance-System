@@ -116,7 +116,7 @@ def read_rfid():
         while True:
             id, text = reader.read()
             with data_lock:
-                shared_data['rfid'] = id  # Store only the ID
+                shared_data['rfid'] = str(id)  # Convert the ID to a string
             print(f"RFID Read: ID - {id}")
             time.sleep(1)  # Add a delay to prevent constant reading, adjust as needed
 
@@ -295,7 +295,7 @@ def license_plate_recognition_thread():
 
 def send_data_to_mongodb():
     # MongoDB setup
-    mongo_host = '192.168.67.211'
+    mongo_host = '192.168.137.1'
     mongo_port = 27017
     database_name = 'smartparking'
     collection_name = 'datadump'

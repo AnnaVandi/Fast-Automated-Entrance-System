@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>libSCx371x.so.2.18</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.identive.drivers.scx371x</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>2.18</string>
+	<key>ifdCapabilities</key>
+	<string>0x00000000</string>
+	<key>ifdManufacturerString</key>
+	<string>Identiv</string>
+	<key>ifdManufacturerURL</key>
+	<string>http://www.identiv.com</string>
+	<key>ifdProtocolSupport</key>
+	<string>0x00000001</string>
+	<key>ifdVersionNumber</key>
+	<string>0x00000001</string>
+	<key>ifdProductString</key>
+	<string>scx371x driver</string>
+	<key>ifdVendorID</key>
+	<array>
+		<string>0x04E6</string>
+		<string>0x04E6</string>		
+		<string>0x04E6</string>
+		<string>0x04E6</string>
+	</array>
+
+	<key>ifdProductID</key>
+	<array>
+		<string>0x5591</string>
+		<string>0x5592</string>
+		<string>0x5593</string>
+		<string>0x5594</string>
+	</array>
+
+	<key>ifdFriendlyName</key>
+	<array>
+		<string>SCL3711 Reader and NFC Device</string>
+		<string>SCM3712 Reader</string>
+		<string>SCM3712 NFC Reader</string>
+		<string>SCM3712 EA Reader</string>
+	</array>
+
+</dict>
+</plist>

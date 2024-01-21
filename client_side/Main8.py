@@ -13,6 +13,24 @@ import pymongo
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import pyautogui
+from flask import Flask, request, jsonify
+
+
+app = Flask(__name__)
+
+@app.route('/receive-message', methods=['POST'])
+def receive_message():
+    if request.is_json:
+        data = request.json.get('data')
+    else:
+        data = request.form.get('data')
+
+    print("Received message:", data)
+    # Add any additional logic here based on the received message
+    return jsonify(message="Message received"), 200
+
+def run_flask_app():
+    app.run(ssl_context=('cert.pem', 'key.pem'), host='0.0.0.0', port=443)	 
 
 
 shared_data = {
@@ -116,13 +134,12 @@ def read_rfid():
         while True:
             id, text = reader.read()
             with data_lock:
-                shared_data['rfid'] = id  # Store only the ID
+                shared_data['rfid'] = str(id)  # Convert the ID to a string
             print(f"RFID Read: ID - {id}")
             time.sleep(1)  # Add a delay to prevent constant reading, adjust as needed
 
     finally:
         GPIO.cleanup()
-
 def main():
     global shared_data, data_lock
 
@@ -295,7 +312,7 @@ def license_plate_recognition_thread():
 
 def send_data_to_mongodb():
     # MongoDB setup
-    mongo_host = '192.168.67.211'
+    mongo_host = '192.168.137.1'
     mongo_port = 27017
     database_name = 'smartparking'
     collection_name = 'datadump'
@@ -334,19 +351,22 @@ data_thread.start()
 
 if __name__ == "__main__":
     # Create threads for each functionality
+    flask_thread = threading.Thread(target=run_flask_app)
     data_thread = threading.Thread(target=send_data_to_mongodb)
     bt_thread = threading.Thread(target=bluetooth_scanning_thread)
     lpr_thread = threading.Thread(target=license_plate_recognition_thread)
-    rfid_thread = threading.Thread(target=read_rfid)  # Create RFID thread
+    rfid_thread = threading.Thread(target=read_rfid)
 
     # Start threads
+    flask_thread.start()
     bt_thread.start()
     lpr_thread.start()
-    rfid_thread.start()  # Start the RFID thread
+    rfid_thread.start()
 
     # Wait for threads to complete (if needed)
+    flask_thread.join()
     bt_thread.join()
     lpr_thread.join()
-    rfid_thread.join()  # Join RFID thread
+    rfid_thread.join()
 
     print("Program completed.")
